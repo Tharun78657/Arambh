@@ -239,6 +239,8 @@
       z-index: 100;
       background: #fcfcfc;
       display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
       align-items: center;
       justify-content: center;
       transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.8s;
@@ -366,6 +368,8 @@
 <body class="font-sans text-brand-900 antialiased overflow-x-hidden">
   <!-- Preloader -->
   <div id="preloader">
+    <img src="images/logo aarambha.png" alt="Aarambh Logo"
+      class="h-auto w-auto md:h-32 lg:h-40 object-contain drop-shadow-sm fade-in-up">
     <div class="preloader-bar"></div>
   </div>
   <!-- NAVBAR -->
@@ -1088,7 +1092,7 @@
           duration: 1.5,
           ease: 'power2.out'
         });
-      }, 500);
+      }, 700);
     });
 
     // ── Hero Parallax ──
