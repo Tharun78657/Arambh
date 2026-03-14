@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aarambh Phase-1 | Premium Open Plots in Sadasivpet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <!-- Smoothness Libraries -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f9f6f0',
+              100: '#f0eadd',
+              200: '#e0d1b9',
+              300: '#cfb28f',
+              400: '#c0966a',
+              500: '#b27f4d',
+              600: '#a36841',
+              700: '#885238',
+              800: '#6f4432',
+              900: '#5a382b',
+              950: '#301c15',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #fcfcfc;
+      overflow-x: hidden;
+    }
+
+    .hero-bg {
+      background-image: url('images/Gemini_Generated_Image_l0xjnrl0xjnrl0xj.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Fix background-attachment: fixed on iOS/mobile */
+    @supports (-webkit-touch-callout: none) {
+      .hero-bg {
+        background-attachment: scroll;
+      }
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(90, 56, 43, 0.15);
+      border-color: #cfb28f;
+    }
+
+    /* Disable hover transform on touch devices to prevent sticky hover */
+    @media (hover: none) {
+      .card-hover:hover {
+        transform: none;
+      }
+    }
+
+    .icon-img {
+      transition: all 0.5s ease;
+    }
+
+    .card-hover:hover .icon-img {
+      transform: scale(1.1);
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      letter-spacing: 0.08em;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 56px;
+      height: 2px;
+      background: linear-gradient(90deg, #c0966a, rgba(192, 150, 106, 0));
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: #885238;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .whatsapp-float {
+      animation: bounce-soft 3s infinite;
+    }
+
+    @keyframes bounce-soft {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent);
+    }
+
+    /* ── Logo Scaling (responsive) ── */
+    .logo-header {
+      transform: scale(2.2);
+      transform-origin: left center;
+      display: block;
+    }
+
+    .logo-footer {
+      transform: scale(1.4);
+      transform-origin: left center;
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      .logo-header {
+        transform: scale(2);
+      }
+
+      .logo-footer {
+        transform: scale(1.6);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .logo-header {
+        transform: scale(3);
+      }
+
+      .logo-footer {
+        transform: scale(2.1);
+      }
+    }
+
+    /* ── Smoothness Overhaul ── */
+    html.lenis {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Premium Transitions */
+    .premium-transition {
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #fcfcfc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.8s;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-bar {
+      width: 100px;
+      height: 2px;
+      background: #f0eadd;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preloader-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      background: #a36841;
+      animation: loading 1.5s infinite ease-in-out;
+    }
+
+    @keyframes loading {
+      0% {
+        left: -50%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    /* mobile menu refinements */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.6s;
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      max-width: 320px;
+      height: 100%;
+      z-index: 70;
+      background: #fcfcfc;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .mobile-menu-panel.open {
+      transform: translateX(0);
+    }
+
+    /* ── Hamburger Button ── */
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      padding: 4px;
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: #5a382b;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ── Responsive Whatsapp Button ── */
+    @media (max-width: 639px) {
+      .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-brand-900 antialiased overflow-x-hidden">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-bar"></div>
+  </div>
+  <!-- NAVBAR -->
+  <nav class="glass-nav border-b border-brand-100 shadow-sm fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center gap-x-4">
+        <div class="h-10 sm:h-12 flex items-center justify-center">
+          <img src="images/logo aarambha.png" alt="Aarambh Logo"
+            class="h-10 sm:h-12 object-contain drop-shadow-sm logo-header">
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-x-10 text-sm font-medium tracking-wide uppercase">
+        <a href="#highlights" class="nav-link text-brand-800 hover:text-brand-600">Highlights</a>
+        <a href="#location" class="nav-link text-brand-800 hover:text-brand-600">Location</a>
+        <a href="#layout" class="nav-link text-brand-800 hover:text-brand-600">Layout</a>
+        <a href="#map" class="nav-link text-brand-800 hover:text-brand-600">Map</a>
+        <a href="#contact" class="nav-link text-brand-800 hover:text-brand-600">Contact</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-x-3 sm:gap-x-5">
+        <a href="https://wa.me/919876543210" target="_blank"
+          class="hidden lg:flex items-center gap-x-2 text-brand-700 hover:text-brand-500 transition-colors font-medium text-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>+91 98765 43210</span>
+        </a>
+        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+          class="hidden sm:flex bg-brand-900 hover:bg-brand-800 text-white text-xs sm:text-sm font-medium px-5 sm:px-8 py-3 sm:py-3.5 rounded-none tracking-wider uppercase transition-all items-center gap-x-2 shadow-lg">
+          <span>Enquire Now</span>
+        </button>
+        <!-- Mobile Hamburger -->
+        <button class="hamburger-btn md:hidden" id="hamburgerBtn" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- MOBILE MENU PANEL -->
+  <div class="mobile-menu-panel" id="mobileMenuPanel">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-brand-100">
+      <span class="font-serif text-xl text-brand-900">Menu</span>
+      <button id="mobileMenuClose"
+        class="w-9 h-9 flex items-center justify-center text-brand-600 hover:text-brand-900 text-xl"
+        aria-label="Close Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="flex flex-col px-5 py-6 space-y-1">
+      <a href="#highlights"
+        class="mobile-nav-link block py-3 text-base font-medium tracking-wide uppercase text-brand-800 hover:text-brand-500 border-b border-brand-50 transition-colors">Highlights</a>
+      <a href="#location"
+        class="mobile-nav-link block py-3 text-base font-medium tracking-wide uppercase text-brand-800 hover:text-brand-500 border-b border-brand-50 transition-colors">Location</a>
+      <a href="#layout"
+        class="mobile-nav-link block py-3 text-base font-medium tracking-wide uppercase text-brand-800 hover:text-brand-500 border-b border-brand-50 transition-colors">Layout</a>
+      <a href="#map"
+        class="mobile-nav-link block py-3 text-base font-medium tracking-wide uppercase text-brand-800 hover:text-brand-500 border-b border-brand-50 transition-colors">Map</a>
+      <a href="#contact"
+        class="mobile-nav-link block py-3 text-base font-medium tracking-wide uppercase text-brand-800 hover:text-brand-500 border-b border-brand-50 transition-colors">Contact</a>
+    </div>
+    <div class="px-5 py-4 mt-auto space-y-4">
+      <a href="https://wa.me/919876543210" target="_blank"
+        class="flex items-center gap-x-3 text-brand-700 font-medium text-sm">
+        <i class="fa-brands fa-whatsapp text-xl text-[#25D366]"></i>
+        <span>+91 98765 43210</span>
+      </a>
+      <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); closeMobileMenu();"
+        class="w-full bg-brand-900 hover:bg-brand-800 text-white text-sm font-medium px-6 py-3.5 rounded-none tracking-wider uppercase transition-all shadow-lg text-center">
+        Enquire Now
+      </button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <!-- HERO SECTION -->
+  <header class="relative min-h-[65vh] flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="images/hero section.png" class="w-full h-[120%] object-cover hero-bg-parallax opacity-0"
+        alt="Aarambh Open Plots" style="transform: translateY(-10%);">
+    </div>
+
+    <!-- Minimal Overlay for maximum image clarity -->
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+
+    <!-- Content Container -->
+    <div
+      class="relative max-w-5xl mx-auto px-4 sm:px-6 w-full text-center space-y-5 sm:space-y-6 md:space-y-8 py-20 sm:py-24">
+
+      <!-- Premium Badge -->
+      <div class="fade-in-up" style="animation-delay: 0.2s;">
+        <span
+          class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-300/30 bg-white/5 backdrop-blur-md text-[9px] sm:text-[10px] md:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-brand-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
+          TS RERA & DTCP Approved
+        </span>
+      </div>
+
+      <!-- Glass Container for Headline + Subtitle -->
+      <div
+        class="fade-in-up inline-block w-full max-w-4xl mx-auto bg-black/25 backdrop-blur-lg border border-white/15 rounded-2xl px-5 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10 shadow-[0_15px_50px_rgba(0,0,0,0.35)]"
+        style="animation-delay: 0.4s;">
+        <div class="space-y-3 sm:space-y-4 md:space-y-5">
+          <h1
+            class="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
+            The Future of <span class="italic text-brand-200">Luxury Living</span> <br class="hidden md:block"> in
+            Sadasivpet
+          </h1>
+          <div class="h-0.5 w-12 sm:w-16 bg-brand-400 mx-auto rounded-full"></div>
+          <p class="text-xs sm:text-base md:text-lg text-brand-50/85 font-light max-w-2xl mx-auto leading-relaxed">
+            Premium open plots near NH-65 Mumbai Highway. <br class="hidden md:block">
+            A secure, gated community designed for legacy and growth.
+          </p>
+        </div>
+      </div>
+
+      <!-- Premium Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 pt-1 sm:pt-2 fade-in-up px-2"
+        style="animation-delay: 0.8s;">
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+          class="group relative overflow-hidden bg-brand-400 hover:bg-brand-300 text-brand-950 w-full sm:w-auto px-7 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase font-bold transition-all shadow-2xl hover:-translate-y-1">
+          <span class="relative z-10">Book Site Visit</span>
+          <div
+            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          </div>
+        </button>
+
+        <a href="https://drive.google.com/file/d/1Zt3NctrAgTWT9FV1_HmyzgdWdSJFj7t2/view?usp=sharing" target="_blank"
+          class="border border-white/40 hover:border-white text-white hover:bg-white hover:text-brand-950 w-full sm:w-auto px-7 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase font-bold transition-all backdrop-blur-sm text-center inline-block">
+          Download Brochure
+        </a>
+      </div>
+
+      <!-- Detail Line -->
+      <div
+        class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[9px] sm:text-[10px] md:text-xs text-brand-300 tracking-[0.3em] sm:tracking-[0.4em] uppercase pt-2 sm:pt-4 fade-in-up opacity-80"
+        style="animation-delay: 1s;">
+        <span>9 Acres</span>
+        <span class="w-1 h-1 rounded-full bg-brand-700"></span>
+        <span>33 ft CC Roads</span>
+        <span class="w-1 h-1 rounded-full bg-brand-700"></span>
+        <span>Parks & Security</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- PROJECT HIGHLIGHTS -->
+  <section id="highlights" class="py-16 sm:py-24 md:py-32 bg-white relative reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-12 gap-12 items-start mb-16">
+        <div class="lg:col-span-5 space-y-5">
+          <span class="text-brand-500 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Project
+            Highlights</span>
+          <div ">
+            <img src=" images/person.svg" alt="Happy family at Aarambh" class=" object-cover"
+            onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+          <!-- Column 1 -->
+          <div class="space-y-6">
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-map text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">9 Acres Extent</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  9 acres of land with plots arranged in a simple, easy to understand layout.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-road text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">33 ft CC Roads</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Strong 33 ft cement roads inside the project for smooth and safe movement.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-tree text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Park & Play Zone</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Park and play area where children and families can relax and spend time.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-archway text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Signature Entrance</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Main entrance arch with security cabin for controlled entry and exit.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="space-y-6">
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-shield-halved text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Perimeter Security</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Compound wall around the layout to keep the project safe and private.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-leaf text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Avenue Plantation</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Trees planted along the roads to give shade and a pleasant look.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-droplet text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Water Network</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Water lines planned so each plot can get a proper water connection.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="card-hover bg-[#fdfcf8] border-2 border-brand-200/40 px-7 py-8 flex gap-x-5 items-start reveal-on-scroll">
+              <div
+                class="w-14 h-14 shrink-0 rounded-full bg-brand-50/70 flex items-center justify-center text-brand-800 icon-img">
+                <i class="fa-solid fa-bolt text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-brand-900 mb-2 mt-1">Underground Power</h3>
+                <p class="text-brand-800/80 text-sm leading-relaxed font-light">
+                  Power lines are underground so the view is clean and wires are protected.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAMPHLET / VISUAL SHOWCASE -->
+  <section class="py-16 sm:py-24 md:py-28 bg-white border-y border-brand-100/70 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-center gap-8 sm:gap-10 md:gap-14">
+        <div class="md:w-1/2 space-y-4">
+          <span class="text-brand-500 text-xs font-medium tracking-[0.3em] uppercase">Project Snapshot</span>
+          <h2 class="font-serif text-3xl md:text-4xl text-brand-900">
+            See the project brochure.
+          </h2>
+          <p class="text-brand-600 font-light text-base md:text-lg">
+            These brochure pages give you a simple overview of the location, layout and main features of Aarambh
+            Phase‑1.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-brand-700">
+            <li>• TS RERA &amp; DTCP approved open plots</li>
+            <li>• 9 acres with clear internal road network</li>
+            <li>• Close to schools, colleges and industries</li>
+          </ul>
+        </div>
+        <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <img src="images/Aarambh phase-1 Pamplet (1)-images-0.jpg" onerror="this.style.display='none'"
+            alt="Pamphlet Front" class="w-full h-auto shadow-2xl border border-brand-100 object-cover">
+          <img src="images/Aarambh phase-1 Pamplet (1)-images-1.jpg" onerror="this.style.display='none'"
+            alt="Pamphlet Back" class="w-full h-auto shadow-2xl border border-brand-100 object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- LOCATION HIGHLIGHTS -->
+  <section id="location"
+    class="py-16 sm:py-24 md:py-32 bg-brand-950 text-white relative overflow-hidden reveal-on-scroll">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_#6f4432_0,_#301c15_40%,_#0b0504_75%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-14 items-start">
+
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-brand-300 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Location
+            Benefits</span>
+          <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white section-title">
+            Well‑connected and easy to reach.
+          </h2>
+          <p class="text-brand-100/85 font-light leading-relaxed text-base md:text-lg">
+            The project is on the NH‑65 Mumbai Highway, so you can reach schools, colleges, industries and the city
+            quickly.
+          </p>
+
+          <div
+            class="mt-4 bg-black/25 border border-white/10 rounded-2xl p-6 flex items-center gap-x-5 shadow-[0_20px_70px_rgba(0,0,0,0.7)]">
+            <div class="w-12 h-12 shrink-0 bg-brand-800/70 flex items-center justify-center rounded-full">
+              <img src="images/location (1).png"
+                onerror="this.src='images/logo aarambha.png'; this.classList.add('opacity-50')" alt="Pin"
+                class="w-6 h-6 object-contain invert mix-blend-screen">
+            </div>
+            <div>
+              <div class="font-serif text-xl tracking-wide text-brand-50">NH‑65 Mumbai Highway</div>
+              <div class="text-brand-300 text-[11px] font-light mt-1 uppercase tracking-[0.3em]">High Growth Corridor •
+                Sadasivpet</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                02 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">Woxen Business School</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                05 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">Kamkol Toll Plaza</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                15 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">MRF Unit</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                20 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">NIMZ (13,000 acres)</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                20 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">Regional Ring Road</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                25 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">IIT Hyderabad</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                30 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">Toshiba Factory</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                35 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">GITAM University</div>
+            </div>
+
+            <div
+              class="border-l-2 border-brand-500/70 pl-4 sm:pl-5 py-3 hover:border-brand-300 transition-colors group reveal-on-scroll">
+              <div
+                class="text-brand-300 text-[11px] font-medium tracking-[0.35em] uppercase mb-1 group-hover:text-brand-100 transition-colors">
+                40 Mins</div>
+              <div class="font-serif text-xl md:text-2xl text-brand-50">Outer Ring Road</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT & MAP COMBO -->
+  <section id="layout" class="py-16 sm:py-24 md:py-32 bg-brand-50 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Layout Plan -->
+      <div class="mb-16 sm:mb-24 md:mb-28">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 space-y-5">
+            <span class="text-brand-500 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Layout Plan</span>
+            <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-900 section-title">
+              Simple, easy to follow layout.
+            </h2>
+            <p class="mt-3 text-brand-700 font-light text-base md:text-lg">
+              The plots and roads are planned in a clear way so you can easily understand and choose your plot.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-sm text-brand-700">
+              <li>• Plots are clearly marked on the plan</li>
+              <li>• Roads are wide enough for smooth movement</li>
+              <li>• Park and open spaces shown inside the layout</li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="relative mx-auto max-w-xl shadow-2xl bg-white p-4 reveal-on-scroll">
+              <div class="border border-brand-200 p-2">
+                <img src="images/map 1.png" onerror="this.src='images/map 2.png'" alt="Aarambh Phase-1 Layout"
+                  class="w-full h-auto object-contain">
+              </div>
+              <div
+                class="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-white/95 backdrop-blur px-6 py-3 shadow-xl border border-brand-100 font-medium tracking-[0.3em] text-[10px] uppercase text-brand-900">
+                9 Acres • 33 ft CC Roads
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route Map -->
+      <div id="map" class="pt-10 border-t border-brand-200 reveal-on-scroll">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 order-2 lg:order-1">
+            <div class="relative mx-auto max-w-3xl shadow-2xl bg-white p-4">
+              <div class="border border-brand-200 p-2">
+                <img src="images/map 2.png" alt="Aarambh Location Map"
+                  class="w-full h-auto max-h-[420px] object-contain mx-auto">
+              </div>
+              <div
+                class="relative sm:absolute top-0 left-0 sm:top-6 sm:left-6 bg-brand-900 px-7 py-4 text-brand-50 shadow-xl font-medium mb-4 sm:mb-0 inline-block w-full sm:w-auto">
+                <div class="text-[10px] tracking-[0.3em] text-brand-300 uppercase mb-1">Sadasivpet</div>
+                <div class="font-serif text-lg tracking-wide">NH‑65, Hyderabad</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-5">
+            <span class="text-brand-600 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Route Map</span>
+            <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-900 section-title">
+              See how to reach the site.
+            </h2>
+            <p class="text-brand-700 font-light text-base md:text-lg">
+              The route map shows the main roads and landmarks around the project so you know exactly how to come to
+              the site.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT & LEAD FORM -->
+  <section id="contact" class="py-16 sm:py-24 md:py-32 bg-brand-950 text-brand-50 reveal-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 sm:gap-16">
+
+      <!-- Info -->
+      <div class="lg:col-span-5 flex flex-col justify-center space-y-6">
+        <span class="text-brand-200 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Contact Us</span>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-white section-title">
+          Talk to us about your plot.
+        </h2>
+        <p class="text-brand-100/85 font-light text-base md:text-lg">
+          Fill in your details and we will call you to explain plot options, prices and site visit timings.
+        </p>
+
+        <div class="space-y-6 text-sm">
+          <div class="flex gap-x-4 items-center">
+            <div
+              class="w-11 h-11 shrink-0 border border-brand-700 rounded-full flex items-center justify-center text-brand-100 text-base">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <div class="font-serif text-xl text-brand-50">+91 98765 43210</div>
+              <div class="text-brand-300 text-[11px] font-light mt-1 tracking-[0.3em] uppercase">Direct Call /
+                WhatsApp</div>
+            </div>
+          </div>
+
+          <div class="flex gap-x-4 items-center">
+            <div
+              class="w-11 h-11 shrink-0 border border-brand-700 rounded-full flex items-center justify-center text-brand-100 text-base">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <div class="font-serif text-xl text-brand-50">info@aarambhplots.com</div>
+              <div class="text-brand-300 text-[11px] font-light mt-1 tracking-[0.3em] uppercase">Email Address</div>
+            </div>
+          </div>
+
+          <div class="flex gap-x-4 items-center">
+            <div
+              class="w-11 h-11 shrink-0 border border-brand-700 rounded-full flex items-center justify-center text-brand-100 text-base">
+              <i class="fa-solid fa-map-pin"></i>
+            </div>
+            <div>
+              <div class="font-serif text-xl text-brand-50">Sadasivpet, Mumbai Hwy</div>
+              <div class="text-brand-300 text-[11px] font-light mt-1 tracking-[0.3em] uppercase">Site Location</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-7">
+        <div
+          class="bg-brand-900/60 border border-brand-700/60 shadow-[0_22px_80px_rgba(0,0,0,0.8)] p-6 sm:p-10 md:p-12">
+          <form id="leadForm" onsubmit="handleSubmit(event)" class="space-y-7">
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-[11px] font-medium tracking-[0.3em] text-brand-200 uppercase mb-2">Full
+                  Name</label>
+                <input type="text" id="name" required
+                  class="w-full bg-transparent border-b border-brand-600 focus:border-brand-300 py-3 text-base md:text-lg outline-none transition-colors text-brand-50 placeholder:text-brand-500 font-serif"
+                  placeholder="Enter your name">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-medium tracking-[0.3em] text-brand-200 uppercase mb-2">Phone
+                  Number</label>
+                <input type="tel" id="phone" required
+                  class="w-full bg-transparent border-b border-brand-600 focus:border-brand-300 py-3 text-base md:text-lg outline-none transition-colors text-brand-50 placeholder:text-brand-500 font-serif"
+                  placeholder="Enter your mobile number">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-medium tracking-[0.3em] text-brand-200 uppercase mb-2">Email Address
+                <span class="text-brand-400">(Optional)</span></label>
+              <input type="email" id="email"
+                class="w-full bg-transparent border-b border-brand-600 focus:border-brand-300 py-3 text-base md:text-lg outline-none transition-colors text-brand-50 placeholder:text-brand-500 font-serif"
+                placeholder="Enter your email">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-medium tracking-[0.3em] text-brand-200 uppercase mb-2">Message /
+                Query</label>
+              <textarea id="message" rows="3"
+                class="w-full bg-transparent border-b border-brand-600 focus:border-brand-300 py-3 text-base md:text-lg outline-none transition-colors resize-none text-brand-50 placeholder:text-brand-500 font-serif"
+                placeholder="How can we help you?"></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-brand-300 hover:bg-brand-200 py-4 md:py-5 text-brand-950 font-medium tracking-[0.35em] uppercase text-xs md:text-sm mt-2 transition-colors flex items-center justify-center gap-x-3">
+              <span>Submit Enquiry</span>
+              <i class="fa-solid fa-arrow-right-long text-sm"></i>
+            </button>
+
+            <p class="text-[11px] text-brand-300/80 tracking-[0.2em] uppercase mt-2">
+              We use your details only to contact you about Aarambh Phase‑1.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/919876543210" target="_blank"
+    class="whatsapp-float fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-2xl text-2xl sm:text-3xl z-50 hover:bg-[#128C7E] transition-colors">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-brand-300 pt-14 pb-10 border-t border-brand-900/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-12 gap-y-10 sm:gap-y-14 gap-x-8 sm:gap-x-12">
+
+      <div class="md:col-span-5">
+        <img src="images/logo aarambha.png" alt="Aarambh Logo"
+          class="h-10 object-contain mb-6 filter grayscale brightness-200 opacity-80 logo-footer">
+        <p class="font-light leading-relaxed mb-6 max-w-sm text-brand-200/90">
+          Aarambh Phase‑1 offers premium open plots in Sadasivpet near the NH‑65 Mumbai Highway.
+        </p>
+        <div class="flex gap-x-4 text-lg">
+          <a href="#" class="text-brand-500 hover:text-white transition-colors"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="text-brand-500 hover:text-white transition-colors"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="text-brand-500 hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <h4 class="text-white tracking-[0.25em] uppercase text-xs font-medium mb-6">Quick Links</h4>
+        <div class="space-y-3 font-light text-sm">
+          <a href="#highlights" class="block hover:text-brand-400 transition-colors">Project Highlights</a>
+          <a href="#location" class="block hover:text-brand-400 transition-colors">Location &amp; Connectivity</a>
+          <a href="#layout" class="block hover:text-brand-400 transition-colors">Layout &amp; Route Map</a>
+          <a href="#contact" class="block hover:text-brand-400 transition-colors">Enquire Now</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-4">
+        <h4 class="text-white tracking-[0.25em] uppercase text-xs font-medium mb-6">Accreditations</h4>
+        <div class="flex flex-wrap gap-3 text-white text-sm font-serif mb-6">
+          <div class="border border-brand-700 px-5 py-2.5 bg-brand-900/60">TS RERA</div>
+          <div class="border border-brand-700 px-5 py-2.5 bg-brand-900/60">DTCP</div>
+        </div>
+        <div class="font-light text-xs text-brand-500">
+          RERA Number: PXXXXXXXXXXXXX
+        </div>
+      </div>
+
+    </div>
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 pt-6 border-t border-brand-800/50 flex flex-col md:flex-row justify-between items-center gap-y-3 text-center md:text-left">
+      <div class="text-xs font-light text-brand-500">
+        Designed by <a href="http://digitalwin.in" target="_blank" class="hover:text-white transition-colors">Digital
+          win technologies</a> | Copyright &copy; 2026 Aarambh ALL Rights Reserved.
+      </div>
+      <div class="text-[10px] tracking-[0.3em] uppercase text-brand-600">
+        Aarambh Phase-1
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      if (name && phone) {
+        alert(`Thank you, ${name}!\n\nYour enquiry has been received.\nOur team will contact you shortly on ${phone}.\n\nAarambh Phase-1 Team.`);
+        e.target.reset();
+      }
+    }
+
+    // ── Smoothness Library Initializations ──
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Synchronize Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // ── Preloader Removal ──
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+        // Initial hero animation
+        gsap.to('.hero-bg-parallax', {
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power2.out'
+        });
+      }, 500);
+    });
+
+    // ── Hero Parallax ──
+    gsap.to('.hero-bg-parallax', {
+      y: '20%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'header',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // ── Smooth Reveal Animations (ScrollTrigger) ──
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    reveals.forEach((el) => {
+      gsap.fromTo(el, {
+        opacity: 0,
+        y: 40,
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // ── Mobile Menu Logic ──
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      hamburgerBtn.classList.add('active');
+      mobileMenuOverlay.classList.add('open');
+      mobileMenuPanel.classList.add('open');
+      lenis.stop(); // Stop scroll while menu open
+    }
+
+    function closeMobileMenu() {
+      hamburgerBtn.classList.remove('active');
+      mobileMenuOverlay.classList.remove('open');
+      mobileMenuPanel.classList.remove('open');
+      lenis.start(); // Resume scroll
+    }
+
+    hamburgerBtn.addEventListener('click', function () {
+      if (mobileMenuPanel.classList.contains('open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+    // Close mobile menu when a nav link is clicked
+    document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMobileMenu();
+      });
+    });
+
+    // Close mobile menu on window resize above md breakpoint
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 768) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+</body>
+
+</html>
