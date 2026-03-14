@@ -533,8 +533,8 @@
         <div class="lg:col-span-5 space-y-5">
           <span class="text-brand-500 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Project
             Highlights</span>
-          <div ">
-            <img src=" images/person.svg" alt="Happy family at Aarambh" class=" object-cover"
+          <div class="relative w-full h-[350px] md:h-[450px] overflow-hidden rounded-xl bg-blend-multiply">
+            <img src="images/person.svg" alt="Happy family at Aarambh" class="w-full h-full object-contain mix-blend-multiply drop-shadow-sm"
             onerror="this.style.display='none'">
           </div>
         </div>
@@ -1044,12 +1044,16 @@
   </footer>
 
   <!-- SUCCESS MODAL -->
-  <div id="successModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-    <div id="successModalInner" class="bg-[#fbfcf8] p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.5)] max-w-md w-full mx-4 transform scale-95 transition-transform duration-300 rounded-[8px] border border-brand-100">
-      <div id="modalContent" class="text-brand-900 text-sm sm:text-[15px] space-y-4 leading-relaxed font-sans font-light tracking-wide">
+  <div id="successModal"
+    class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="successModalInner"
+      class="bg-[#fbfcf8] p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.5)] max-w-md w-full mx-4 transform scale-95 transition-transform duration-300 rounded-[8px] border border-brand-100">
+      <div id="modalContent"
+        class="text-brand-900 text-sm sm:text-[15px] space-y-4 leading-relaxed font-sans font-light tracking-wide">
       </div>
       <div class="mt-8 flex justify-end">
-        <button onclick="closeModal()" class="bg-[#355E3B] hover:bg-[#2a4a2f] text-white px-7 py-2 rounded-full outline outline-2 outline-offset-2 outline-[#355E3B] font-bold tracking-wide text-xs sm:text-sm shadow-md transition-all active:scale-95">
+        <button onclick="closeModal()"
+          class="bg-[#355E3B] hover:bg-[#2a4a2f] text-white px-7 py-2 rounded-full outline outline-2 outline-offset-2 outline-[#355E3B] font-bold tracking-wide text-xs sm:text-sm shadow-md transition-all active:scale-95">
           OK
         </button>
       </div>
@@ -1071,13 +1075,13 @@
           </div>
           <p class="pt-2">Aarambh Phase-1 Team.</p>
         `;
-        
+
         const modal = document.getElementById('successModal');
         const modalInner = document.getElementById('successModalInner');
         modal.classList.remove('opacity-0', 'pointer-events-none');
         modalInner.classList.remove('scale-95');
         modalInner.classList.add('scale-100');
-        
+
         e.target.reset();
       }
     }
