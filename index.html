@@ -175,34 +175,34 @@
 
     /* ── Logo Scaling (responsive) ── */
     .logo-header {
-      transform: scale(2.2);
+      transform: scale(1.4) translateY(-1px);
       transform-origin: left center;
       display: block;
     }
 
     .logo-footer {
-      transform: scale(1.4);
+      transform: scale(1.8) translateY(-4px);
       transform-origin: left center;
       display: block;
     }
 
     @media (min-width: 640px) {
       .logo-header {
-        transform: scale(2);
+        transform: scale(1.3) translateY(-1px);
       }
 
       .logo-footer {
-        transform: scale(1.6);
+        transform: scale(2.2);
       }
     }
 
     @media (min-width: 1024px) {
       .logo-header {
-        transform: scale(3);
+        transform: scale(1.6) translateY(-2px);
       }
 
       .logo-footer {
-        transform: scale(2.1);
+        transform: scale(3.5) translateY(-5px);
       }
     }
 
@@ -368,18 +368,30 @@
 <body class="font-sans text-brand-900 antialiased overflow-x-hidden">
   <!-- Preloader -->
   <div id="preloader">
-    <img src="images/logo aarambha.png" alt="Aarambh Logo"
+    <img src="images/Logo 1.jpg.png" alt="Aarambh Logo"
       class="h-auto w-auto md:h-32 lg:h-40 object-contain drop-shadow-sm fade-in-up">
     <div class="preloader-bar"></div>
   </div>
+
   <!-- NAVBAR -->
   <nav class="glass-nav border-b border-brand-100 shadow-sm fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <div class="flex items-center gap-x-4">
-        <div class="h-10 sm:h-12 flex items-center justify-center">
-          <img src="images/logo aarambha.png" alt="Aarambh Logo"
-            class="h-10 sm:h-12 object-contain drop-shadow-sm logo-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-1.5 sm:py-2 flex justify-between items-center">
+      <!-- Logo Group (Responsive Branding) -->
+      <div class="flex items-center gap-x-3 sm:gap-x-6 shrink-0">
+        <!-- Company logo -->
+        <div class="flex items-center justify-center">
+          <img src="images/Logo 1.jpg.png" alt="Vaishnavi"
+            class="h-7 sm:h-11 object-contain drop-shadow-sm logo-header shrink-0">
+        </div>
+        <!-- Vertical Separator (Responsive) -->
+        <div class="h-6 sm:h-8 w-[2px] bg-[#5D4037] block"></div>
+        <!-- Project Logo with Phase-1 (Centered) -->
+        <div class="flex flex-col items-center justify-center shrink-0 -ml-1 sm:-ml-2">
+          <img src="images/logo aarambha.png" alt="Aarambh"
+            class="h-5 sm:h-9 object-contain drop-shadow-sm logo-header -ml-2 sm:-ml-4">
+          <span
+            class="text-[6px] sm:text-[10px] uppercase tracking-[0.2em] text-brand-800 font-bold -mt-0.5 sm:-mt-1 whitespace-nowrap">Phase
+            - 1</span>
         </div>
       </div>
 
@@ -533,7 +545,8 @@
         <div class="lg:col-span-5 space-y-5">
           <span class="text-brand-500 text-xs md:text-sm font-medium tracking-[0.35em] uppercase">Project
             Highlights</span>
-          <div class="relative w-full h-[400px] md:h-[550px] lg:h-[650px] overflow-visible rounded-xl bg-blend-multiply flex items-center justify-center mt-8">
+          <div
+            class="relative w-full h-[400px] md:h-[550px] lg:h-[650px] overflow-visible rounded-xl bg-blend-multiply flex items-center justify-center mt-8">
             <!-- Desktop & Tablet Image -->
             <img src="images/person.svg" alt="Happy family at Aarambh"
               class="hidden sm:block w-full h-full object-contain mix-blend-multiply drop-shadow-md sm:scale-125 lg:scale-[1.35] origin-top"
@@ -720,7 +733,7 @@
             class="mt-4 bg-black/25 border border-white/10 rounded-2xl p-6 flex items-center gap-x-5 shadow-[0_20px_70px_rgba(0,0,0,0.7)]">
             <div class="w-12 h-12 shrink-0 bg-brand-800/70 flex items-center justify-center rounded-full">
               <img src="images/location (1).png"
-                onerror="this.src='images/logo aarambha.png'; this.classList.add('opacity-50')" alt="Pin"
+                onerror="this.src='images/Logo 1.jpg.png'; this.classList.add('opacity-50')" alt="Pin"
                 class="w-6 h-6 object-contain invert mix-blend-screen">
             </div>
             <div>
@@ -837,9 +850,17 @@
 
           <div class="lg:col-span-7">
             <div class="relative mx-auto max-w-xl shadow-2xl bg-white p-4 reveal-on-scroll">
-              <div class="border border-brand-200 p-2">
+              <div class="border border-brand-200 p-2 cursor-zoom-in group relative overflow-hidden"
+                onclick="openImageModal('images/map 1.png')">
                 <img src="images/map 1.png" onerror="this.src='images/map 2.png'" alt="Aarambh Phase-1 Layout"
-                  class="w-full h-auto object-contain">
+                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                <div
+                  class="absolute inset-0 bg-brand-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div
+                    class="bg-white/90 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <i class="fa-solid fa-magnifying-glass-plus text-brand-900"></i>
+                  </div>
+                </div>
               </div>
               <div
                 class="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-white/95 backdrop-blur px-6 py-3 shadow-xl border border-brand-100 font-medium tracking-[0.3em] text-[10px] uppercase text-brand-900">
@@ -855,9 +876,17 @@
         <div class="grid lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-6 order-2 lg:order-1">
             <div class="relative mx-auto max-w-3xl shadow-2xl bg-white p-4">
-              <div class="border border-brand-200 p-2">
+              <div class="border border-brand-200 p-2 cursor-zoom-in group relative overflow-hidden"
+                onclick="openImageModal('images/map 2.png')">
                 <img src="images/map 2.png" alt="Aarambh Location Map"
-                  class="w-full h-auto max-h-[420px] object-contain mx-auto">
+                  class="w-full h-auto max-h-[420px] object-contain mx-auto transition-transform duration-500 group-hover:scale-105">
+                <div
+                  class="absolute inset-0 bg-brand-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div
+                    class="bg-white/90 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <i class="fa-solid fa-magnifying-glass-plus text-brand-900"></i>
+                  </div>
+                </div>
               </div>
               <div
                 class="relative sm:absolute top-0 left-0 sm:top-6 sm:left-6 bg-brand-900 px-7 py-4 text-brand-50 shadow-xl font-medium mb-4 sm:mb-0 inline-block w-full sm:w-auto">
@@ -1000,8 +1029,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-12 gap-y-10 sm:gap-y-14 gap-x-8 sm:gap-x-12">
 
       <div class="md:col-span-5">
-        <img src="images/logo aarambha.png" alt="Aarambh Logo"
-          class="h-10 object-contain mb-6 filter grayscale brightness-200 opacity-80 logo-footer">
+        <div class="flex items-center gap-x-2 sm:gap-x-6 mb-10">
+          <img src="images/Logo 1.jpg.png" alt="Vaishnavi Logo"
+            class="h-8 sm:h-10 object-contain filter grayscale brightness-200 opacity-80 logo-footer shrink-0">
+          <div class="h-8 sm:h-10 w-[3px] bg-[#5D4037] shrink-0 ml-4 sm:ml-20"></div>
+          <div class="flex flex-col items-center shrink-0 ml-2 sm:-ml-4">
+            <img src="images/logo aarambha.png" alt="Aarambh Logo"
+              class="h-8 sm:h-10 object-contain filter grayscale brightness-200 opacity-80 logo-footer -ml-4 sm:ml-0">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] text-brand-500 font-bold mt-1 ml-0 sm:ml-16">Phase - 1</span>
+          </div>
+        </div>
         <p class="font-light leading-relaxed mb-6 max-w-sm text-brand-200/90">
           Aarambh Phase‑1 offers premium open plots in Sadasivpet near the NH‑65 Mumbai Highway.
         </p>
@@ -1049,6 +1086,10 @@
     </div>
   </footer>
 
+
+  </div>
+  </div>
+
   <!-- SUCCESS MODAL -->
   <div id="successModal"
     class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -1063,6 +1104,22 @@
           OK
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- IMAGE LIGHTBOX MODAL -->
+  <div id="imageModal"
+    class="fixed inset-0 z-[110] hidden bg-white/95 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+    onclick="closeImageModal()">
+    <div class="relative max-w-5xl w-full h-full flex items-center justify-center">
+      <img id="modalImg"
+        class="max-w-full max-h-full object-contain shadow-2xl transition-all duration-500 scale-95 opacity-0" src=""
+        alt="Enlarged Image">
+      <button
+        class="absolute top-0 right-0 sm:-top-10 sm:-right-10 text-brand-900 text-3xl hover:text-brand-600 transition-colors p-4"
+        aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
   </div>
 
@@ -1098,6 +1155,35 @@
       modal.classList.add('opacity-0', 'pointer-events-none');
       modalInner.classList.remove('scale-100');
       modalInner.classList.add('scale-95');
+    }
+
+    // ── Image Lightbox Logic ──
+    function openImageModal(src) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+      img.src = src;
+      modal.classList.remove('hidden');
+      if (typeof lenis !== 'undefined') lenis.stop();
+
+      // Animate in
+      setTimeout(() => {
+        img.classList.remove('scale-95', 'opacity-0');
+        img.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+
+      // Animate out
+      img.classList.remove('scale-100', 'opacity-100');
+      img.classList.add('scale-95', 'opacity-0');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        if (typeof lenis !== 'undefined') lenis.start();
+      }, 300);
     }
 
     // ── Smoothness Library Initializations ──
